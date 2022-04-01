@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ValidateRut from "./components/ValidateRut";
 import FindDv from "./components/FindDv";
+import GeneratorRut from "./components/GeneratorRut";
 
 const QuickRut = () => {
 
@@ -16,7 +17,12 @@ const QuickRut = () => {
                 <div className="col-12">
                     <FindDv/>
                 </div>
-
+                <div className="col-12">
+                    <hr/>
+                </div>
+                <div className="col-12">
+                    <GeneratorRut/>
+                </div>
             </div>
         </div>
     );

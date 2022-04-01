@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import RutValidator from "w2-rut-validator"
 
-const ValidateRut = () => {
+const FindRut = () => {
 
     const [message, setMessage] = useState(null);
     const [rut, setRut] = useState('');
@@ -65,4 +65,4 @@ const ValidateRut = () => {
     );
 };
 
-export default ValidateRut
+export default FindRut

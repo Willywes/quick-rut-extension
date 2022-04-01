@@ -20,3 +20,8 @@ button:focus {
   outline: 0 !important;
   box-shadow: unset !important;
 }
+
+.render-box{
+  max-height: 300px;
+  overflow-y: auto;
+}
