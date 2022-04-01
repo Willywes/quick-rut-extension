@@ -20,7 +20,7 @@ const ValidateRut = () => {
                 de
                 nuevo.</div>)
         } else {
-            setMessage(<div className="valid-feedback d-block">El RUT <b>{rut} </b> es correcto!.</div>)
+            setMessage(<div className="valid-feedback d-block">El RUT <b>{rut} </b> es correcto.</div>)
         }
     }
 
@@ -38,7 +38,7 @@ const ValidateRut = () => {
                         type="text"
                         id="validate-rut"
                         name="validate-rut"
-                        className="form-control"
+                        className="form-control form-control-sm"
                         onChange={rutFormat}
                         placeholder="19123456-9"
                         onKeyPress={rutValidate}
@@ -47,10 +47,14 @@ const ValidateRut = () => {
                     />
                     <button
                         type="button"
-                        onClick={clear}
-                        className="btn btn-outline-secondary">Clear
+                        onClick={rutValidate}
+                        className="btn btn-sm btn-outline-primary">Verify
                     </button>
-
+                    <button
+                        type="button"
+                        onClick={clear}
+                        className="btn btn-sm btn-outline-secondary">Clear
+                    </button>
                     {
                         message
                     }
