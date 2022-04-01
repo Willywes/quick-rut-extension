@@ -5,51 +5,52 @@ const ValidateRut = () => {
 
     const [message, setMessage] = useState(null);
     const [rut, setRut] = useState('');
+    const [dv, setDv] = useState('');
 
-    const rutFormat = e => {
+    const findRutDv = e => {
         setMessage(null)
-        if (RutValidator.isValid(e.target.value)) {
-            setRut(RutValidator.format(e.target.value))
-        }
-    }
-
-    const rutValidate = e => {
-        setMessage(null)
-        if (!RutValidator.validate(e.target.value)) {
+        setRut(e.target.value)
+        const _dv = RutValidator.getDv(e.target.value);
+        if (_dv !== 'NaN') {
+            setDv(_dv)
+            setMessage(<div className="valid-feedback d-block">El RUT <b>{RutValidator.format(e.target.value)} </b> es
+                correcto.</div>)
+        } else {
             setMessage(<div className="invalid-feedback d-block">El RUT <b>{rut} </b>ingresado no es correcto, intentalo
                 de
                 nuevo.</div>)
-        } else {
-            setMessage(<div className="valid-feedback d-block">El RUT <b>{rut} </b> es correcto.</div>)
         }
+
     }
 
     const clear = () => {
         setRut('')
+        setDv('')
         setMessage(null)
     }
 
     return (
         <div className="row">
             <div className="col-12">
-                <label htmlFor="validate-rut">Validate Rut</label>
+                <label htmlFor="validate-rut">Find Dv</label>
                 <div className="input-group mb-3">
                     <input
+                        style={{width: '50%'}}
                         type="text"
                         id="validate-rut"
                         name="validate-rut"
                         className="form-control form-control-sm"
-                        onChange={rutFormat}
                         placeholder="xxxxxxxxx-x"
-                        onKeyPress={rutValidate}
-                        onBlur={rutValidate}
+                        onChange={findRutDv}
+                        onBlur={findRutDv}
                         value={rut}
                     />
-                    <button
-                        type="button"
-                        onClick={rutValidate}
-                        className="btn btn-sm btn-outline-primary">Verify
-                    </button>
+                    <input
+                        type="text"
+                        readOnly={true}
+                        className="form-control form-control-sm"
+                        value={dv}
+                    />
                     <button
                         type="button"
                         onClick={clear}
